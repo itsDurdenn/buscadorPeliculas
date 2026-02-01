@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+import requests
+
+url="https://api.themoviedb.org/3/movie"
 
 app = Flask(__name__)
 @app.route('/')
