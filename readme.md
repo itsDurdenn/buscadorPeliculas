@@ -5,7 +5,7 @@
 
 **Nombre completo:** [Diaz Martinez Angel Joel]  
 **Carrera:** [Programacion]  
-**Matrícula:** [Tu Matrícula]  
+**Matrícula:** [24308060610640]  
 **Fecha de entrega:** [2 de Febrero del 2026]
 
 ## Descripción del Proyecto
