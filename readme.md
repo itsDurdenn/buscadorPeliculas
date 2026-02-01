@@ -1,7 +1,7 @@
 # Aplicación Web de Películas y Series
 
 ## Información del Alumno
-![Foto del Alumno](static/img/foto.jpg)  
+![Foto del Alumno](static/img/f1.jpg)  
 
 **Nombre completo:** [Diaz Martinez Angel Joel]  
 **Carrera:** [Programacion]  
