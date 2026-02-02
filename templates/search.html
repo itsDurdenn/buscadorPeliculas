@@ -2,6 +2,31 @@
 
 {% block contenido %}
 <div class="container mt-4">
-	<h1 class="text-center text-white mb-4">Resultados de la búsqueda</h1>
+	<h1 class="text-center text-white mb-4">Resultados</h1>
 
+	{% if not movies %}
+		<p class="text-center text-muted">Sin resultados.</p>
+	{% endif %}
+
+	{% if movies %}
+		<div class="row">
+			{% for pelicula in movies %}
+				<div class="col-md-3 col-sm-6 mb-4">
+					<div class="card h-100">
+						{% if pelicula.poster_full %}
+							<img src="{{ pelicula.poster_full }}" class="card-img-top" alt="">
+						{% else %}
+							<img src="/static/img/no-poster.png" class="card-img-top" alt="">
+						{% endif %}
+						<div class="card-body bg-dark text-white">
+							<h5 class="card-title">{{ pelicula.title }}</h5>
+							<p class="card-text small">{{ pelicula.release_date }}</p>
+							<a href="/movie/{{ pelicula.id }}" class="btn btn-primary btn-sm">Ver</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+</div>
 {% endblock contenido %}

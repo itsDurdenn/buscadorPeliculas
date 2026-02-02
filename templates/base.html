@@ -22,6 +22,27 @@
 </nav>
 
 {% block contenido %} 
+<div class="container-fluid p-4">
+	<h2 class="text-white mb-4">Peliculas populares</h2>
+	<div class="row">
+		{% for p in movies %}
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card h-100">
+					{% if p.poster_full %}
+						<img src="{{ p.poster_full }}" class="card-img-top" alt="{{ p.title }}">
+					{% else %}
+						<img src="/static/img/no-poster.png" class="card-img-top" alt="">
+					{% endif %}
+					<div class="card-body bg-dark text-white">
+						<h5 class="card-title">{{ p.title }}</h5>
+						<p class="card-text small">{{ p.release_date }}</p>
+						<a href="/movie/{{ p.id }}" class="btn btn-primary btn-sm">Ver</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
 {% endblock contenido %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

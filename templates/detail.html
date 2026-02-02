@@ -1,5 +1,85 @@
 {% extends "base.html" %}
 
 {% block contenido %}
+<div class="container mt-4">
+	{% if not movie %}
+		<p class="text-center text-white">No encontrada</p>
+	{% endif %}
 
+	{% if movie %}
+		<div class="row mb-4">
+			<div class="col-md-3">
+				{% if movie.poster_full %}
+					<img src="{{ movie.poster_full }}" class="img-fluid rounded" alt="">
+				{% else %}
+					<img src="/static/img/no-poster.png" class="img-fluid rounded" alt="">
+				{% endif %}
+			</div>
+			<div class="col-md-9 text-white">
+				<h1>{{ movie.title }}</h1>
+				
+				<p class="text-muted">{{ movie.release_date }}</p>
+				
+				<p><strong>Calificación:</strong> {{ movie.vote_average }}/10</p>
+				
+				{% if movie.genres %}
+					<p><strong>Géneros:</strong>
+						{% for genero in movie.genres %}
+							{{ genero.name }}
+						{% endfor %}
+					</p>
+				{% endif %}
+				
+				<h5>Sinopsis</h5>
+				<p>{{ movie.overview }}</p>
+				
+				<h5>Información técnica</h5>
+				<p>
+					<strong>Duración:</strong> {{ movie.runtime }} min<br>
+					<strong>Fecha de lanzamiento:</strong> {{ movie.release_date }}<br>
+					{% if movie.budget %}
+						<strong>Presupuesto:</strong> ${{ movie.budget }}<br>
+					{% endif %}
+					{% if movie.revenue %}
+						<strong>Ingresos:</strong> ${{ movie.revenue }}<br>
+					{% endif %}
+				</p>
+			</div>
+		</div>
+
+		{% if movie.trailer %}
+			<div class="row mb-4">
+				<div class="col-12">
+					<h3 class="text-white">Trailer</h3>
+					<div class="ratio ratio-16x9">
+						<iframe src="https://www.youtube.com/embed/{{ movie.trailer }}" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if movie.actores %}
+			<div class="row mb-4">
+				<div class="col-12">
+					<h3 class="text-white">Reparto principal</h3>
+					<div class="row">
+						{% for actor in movie.actores %}
+							<div class="col-md-2 col-sm-4 col-6 mb-3 text-white">
+								{% if actor.foto %}
+									<img src="{{ actor.foto }}" class="img-fluid rounded" alt="">
+								{% else %}
+									<img src="/static/img/no-poster.png" class="img-fluid rounded" alt="">
+								{% endif %}
+								<p class="mt-2 small"><strong>{{ actor.name }}</strong></p>
+								<p class="small text-muted">{{ actor.character }}</p>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		<a href="/" class="btn btn-secondary">Volver</a>
+	{% endif %}
+</div>
 {% endblock contenido %}
