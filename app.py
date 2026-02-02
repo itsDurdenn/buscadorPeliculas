@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request 
 import requests
 
-url="https://api.themoviedb.org/3/movie"
+API_KEY="beafddf47a67dfbd047f0534d1f41694"
+BASE_URL = "https://api.themoviedb.org/3"
+
 
 app = Flask(__name__)
 @app.route('/')
